@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bucket List Challenge</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: url('1.jfif') no-repeat center center fixed;
+            background-size: cover;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+            cursor: default;
+        }
+
+        @media screen and (orientation : portrait) {
+            body {
+                background: url('bucket.jpg') no-repeat center center fixed;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Brush Script MT', cursive;
+            color: #ff7f7f;
+            font-size: 3em;
+            margin-bottom: 0;
+        }
+
+        .subtitle {
+            color: #ff7f7f;
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+
+        .credit {
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        .list-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .list-column {
+            flex: 0 0 48%;
+        }
+
+        .list-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-container {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkmark {
+            height: 25px;
+            width: 25px;
+            background-color: transparent;
+            border: 2px solid #555;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .checkbox-container.checked .checkmark:after {
+            content: '✓';
+            display: block;
+            text-align: center;
+            font-size: 70px;
+            line-height: 25px;
+            color: #ff7f7f;
+        }
+
+        #counter {
+            font-weight: bold;
+            color: #ff7f7f;
+        }
+
+        #drawing-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            filter: blur(5px);
+        }
+
+        .tool-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #2e2e2e;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 300px;
+        }
+
+        .tool-button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            margin: 5px;
+            cursor: pointer;
+            transition: tranform 2s 0s linear;
+        }
+
+        .tool-button:hover {
+            transform: scale(1.5);
+        }
+
+        .tool-button.active {
+            border: 2px solid #fff;
+        }
+
+        #mouse-tool {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10,2 L18,18 L10,14 L2,18 Z" fill="none" stroke="white" stroke-width="2"/></svg>');
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="drawing-layer"></canvas>
+        <h1>Our Bucket List</h1>
+        <div class="list-container">
+            <div class="list-column">
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        Amarnath yatra or any yatra in north
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        lonavala trip 
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        Arcade game date
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        pani puri competition
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        Go karting
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        Water Park Wet and Joy
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        Chnadratal lake
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        badminton
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        Barish mein Bhigana
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        Holi
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        Laser tag
+                    </label>
+                </div>
+                <div class="list-item">
+                    <label class="checkbox-container">
+                        <span class="checkmark"></span>
+                        trekking
+                    </label>
+                </div>
+                <!-- Add more items here -->
+            </div>
+            <div class="list-column">
+                <!-- Add more items here -->
+            </div>
+        </div>
+    </div>
+    <div class="tool-panel">
+        <button id="mouse-tool" class="tool-button active"></button>
+        <button id="yellow-marker" class="tool-button" style="background-color: yellow;"></button>
+        <button id="green-marker" class="tool-button" style="background-color: #00ff00;"></button>
+        <button id="blue-marker" class="tool-button" style="background-color: #00ffff;"></button>
+        <button id="pink-marker" class="tool-button" style="background-color: #ff69b4;"></button>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.checkbox-container');
+        const counter = document.getElementById('counter');
+        const container = document.querySelector('.container');
+        const canvas = document.getElementById('drawing-layer');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentTool = 'mouse';
+        let currentColor = 'yellow';
+    
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                checkbox.classList.toggle('checked');
+                updateCounter();
+            });
+        });
+    
+        function updateCounter() {
+            const checkedCount = document.querySelectorAll('.checkbox-container.checked').length;
+            counter.textContent = checkedCount;
+        }
+    
+        function resizeCanvas() {
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+        }
+    
+        function startDrawing(e) {
+            if (currentTool === 'marker') {
+                isDrawing = true;
+                ctx.beginPath();
+                draw(e);
+            }
+        }
+    
+        function stopDrawing() {
+            isDrawing = false;
+            ctx.closePath(); // Close the path to ensure the drawing is completed
+        }
+    
+        function draw(e) {
+            if (!isDrawing || currentTool !== 'marker') return;
+    
+            ctx.lineWidth = 20;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = currentColor;
+    
+            let x, y;
+            if (e.touches) {
+                x = e.touches[0].clientX - container.offsetLeft;
+                y = e.touches[0].clientY - container.offsetTop;
+            } else {
+                x = e.clientX - container.offsetLeft;
+                y = e.clientY - container.offsetTop;
+            }
+    
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath(); // Begin a new path to avoid resetting previous paths
+            ctx.moveTo(x, y);
+    
+            // Prevent default scrolling when drawing
+            e.preventDefault();
+        }
+    
+        function preventTouchScroll(e) {
+            if (currentTool === 'marker' && e.touches.length === 1) {
+                e.preventDefault();
+            }
+        }
+    
+        window.addEventListener('resize', resizeCanvas);
+        container.addEventListener('mousedown', startDrawing);
+        container.addEventListener('mouseup', stopDrawing);
+        container.addEventListener('mousemove', draw);
+        container.addEventListener('mouseleave', stopDrawing);
+        container.addEventListener('touchstart', startDrawing);
+        container.addEventListener('touchend', stopDrawing);
+        container.addEventListener('touchmove', draw);
+        container.addEventListener('touchmove', preventTouchScroll);
+    
+        // Tool panel functionality
+        const toolButtons = document.querySelectorAll('.tool-button');
+        toolButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                toolButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                if (button.id === 'mouse-tool') {
+                    currentTool = 'mouse';
+                    container.style.cursor = 'default';
+                } else {
+                    currentTool = 'marker';
+                    currentColor = button.style.backgroundColor;
+                    container.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="8" cy="8" r="7" fill="${currentColor}" stroke="black" stroke-width="2"/></svg>') 8 8, auto`;
+                }
+            });
+        });
+    
+        resizeCanvas();
+    </script>
+    
+    
+    
+    
+</body>
+
+</html>
